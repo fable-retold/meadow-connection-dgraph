@@ -1,0 +1,18 @@
+{
+	"Hash": "meadow-connection-dgraph",
+	"Name": "Meadow Connection Dgraph",
+	"Tagline": "DGraph graph database connection provider for Meadow",
+	"Palette": "mix",
+	"Icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 96 96\" width=\"96\" height=\"96\">\n\t\t<defs>\n\t\t\t<clipPath id=\"frame-meadow-connection-dgraph-filled-light\">\n\t\t\t\t<path d=\"M 2 48\n\t\t\tA 46 46 0 1 0 94 48\n\t\t\tA 46 46 0 1 0 2 48 Z\"/>\n\t\t\t</clipPath>\n\t\t</defs>\n\t\t<path d=\"M 2 48\n\t\t\tA 46 46 0 1 0 94 48\n\t\t\tA 46 46 0 1 0 2 48 Z\" fill=\"#2768dc\"/>\n\t\t<g clip-path=\"url(#frame-meadow-connection-dgraph-filled-light)\"><circle cx=\"48\" cy=\"48\" r=\"38\" fill=\"rgba(255,255,255,0.18)\"/>\n\t\t\t\t\t<circle cx=\"48\" cy=\"48\" r=\"21\" fill=\"#e7512e\"/></g>\n\t\t<text x=\"48\" y=\"50\" text-anchor=\"middle\" dominant-baseline=\"central\"\n\t\t\tfont-family=\"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\"\n\t\t\tfont-size=\"28\" font-weight=\"700\"\n\t\t\tfill=\"#ffffff\" letter-spacing=\"-1\">MCD</text>\n\t</svg>",
+	"IconType": "svg",
+	"Favicon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 96 96\" width=\"96\" height=\"96\">\n\t\t<defs>\n\t\t\t<clipPath id=\"fav-meadow-connection-dgraph-light\">\n\t\t\t\t<path d=\"M 2 48\n\t\t\tA 46 46 0 1 0 94 48\n\t\t\tA 46 46 0 1 0 2 48 Z\"/>\n\t\t\t</clipPath>\n\t\t</defs>\n\t\t<path d=\"M 2 48\n\t\t\tA 46 46 0 1 0 94 48\n\t\t\tA 46 46 0 1 0 2 48 Z\" fill=\"#2768dc\"/>\n\t\t<g clip-path=\"url(#fav-meadow-connection-dgraph-light)\"><circle cx=\"48\" cy=\"48\" r=\"42\" fill=\"rgba(255,255,255,0.22)\"/>\n\t\t\t\t\t<circle cx=\"48\" cy=\"48\" r=\"21\" fill=\"#e7512e\"/></g>\n\t\t<text x=\"48\" y=\"50\" text-anchor=\"middle\" dominant-baseline=\"central\"\n\t\t\tfont-family=\"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\"\n\t\t\tfont-size=\"60\" font-weight=\"800\"\n\t\t\tfill=\"#ffffff\" letter-spacing=\"-1\">M</text>\n\t</svg>",
+	"FaviconDark": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 96 96\" width=\"96\" height=\"96\">\n\t\t<defs>\n\t\t\t<clipPath id=\"fav-meadow-connection-dgraph-dark\">\n\t\t\t\t<path d=\"M 2 48\n\t\t\tA 46 46 0 1 0 94 48\n\t\t\tA 46 46 0 1 0 2 48 Z\"/>\n\t\t\t</clipPath>\n\t\t</defs>\n\t\t<path d=\"M 2 48\n\t\t\tA 46 46 0 1 0 94 48\n\t\t\tA 46 46 0 1 0 2 48 Z\" fill=\"#7aa0e4\"/>\n\t\t<g clip-path=\"url(#fav-meadow-connection-dgraph-dark)\"><circle cx=\"48\" cy=\"48\" r=\"42\" fill=\"rgba(255,255,255,0.22)\"/>\n\t\t\t\t\t<circle cx=\"48\" cy=\"48\" r=\"21\" fill=\"#ec9884\"/></g>\n\t\t<text x=\"48\" y=\"50\" text-anchor=\"middle\" dominant-baseline=\"central\"\n\t\t\tfont-family=\"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\"\n\t\t\tfont-size=\"60\" font-weight=\"800\"\n\t\t\tfill=\"#101418\" letter-spacing=\"-1\">M</text>\n\t</svg>",
+	"Colors": {
+		"Primary": "#2768dc",
+		"Secondary": "#e7512e",
+		"PrimaryLight": "#2768dc",
+		"PrimaryDark": "#7aa0e4",
+		"SecondaryLight": "#e7512e",
+		"SecondaryDark": "#ec9884"
+	}
+}
