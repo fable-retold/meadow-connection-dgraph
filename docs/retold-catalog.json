@@ -1,63 +1,150 @@
 {
-	"Generated": "2026-04-10T17:20:22.006Z",
+	"Generated": "2026-05-22T05:39:05.886Z",
+	"Mode": "module",
 	"GitHubOrg": "stevenvelozo",
 	"DefaultBranch": "master",
-	"Groups": [
-		{
-			"Name": "Dist",
-			"Key": "dist",
-			"Description": "",
-			"Modules": [
-				{
-					"Name": "indoctrinate_content_staging",
-					"Repo": "indoctrinate_content_staging",
-					"Group": "dist",
-					"Branch": "master",
-					"HasDocs": false,
-					"HasCover": false,
-					"Sidebar": [],
-					"DocFiles": []
-				}
-			]
-		},
-		{
-			"Name": "Docs",
-			"Key": "docs",
-			"Description": "",
-			"Modules": [
-				{
-					"Name": "api",
-					"Repo": "api",
-					"Group": "docs",
-					"Branch": "master",
-					"HasDocs": true,
-					"HasCover": false,
-					"Sidebar": [],
-					"DocFiles": [
-						"api/connect.md",
-						"api/connectAsync.md",
-						"api/createTable.md",
-						"api/createTables.md",
-						"api/generateCreateTableStatement.md",
-						"api/generateDropTableStatement.md",
-						"api/pool.md",
-						"api/reference.md",
-						"api/stub.md"
-					]
-				},
-				{
-					"Name": "css",
-					"Repo": "css",
-					"Group": "docs",
-					"Branch": "master",
-					"HasDocs": true,
-					"HasCover": false,
-					"Sidebar": [],
-					"DocFiles": [
-						"css/docuserve.css"
-					]
-				}
-			]
-		}
-	]
+	"Module": {
+		"Name": "meadow-connection-dgraph",
+		"Repo": "meadow-connection-dgraph",
+		"Group": "",
+		"Branch": "master",
+		"HasDocs": true,
+		"HasCover": true,
+		"Sidebar": [
+			{
+				"Title": "Getting Started",
+				"Children": [
+					{
+						"Title": "Overview",
+						"Path": "README.md"
+					},
+					{
+						"Title": "Quickstart",
+						"Path": "quickstart.md"
+					}
+				]
+			},
+			{
+				"Title": "Architecture",
+				"Children": [
+					{
+						"Title": "Design & Data Flow",
+						"Path": "architecture.md"
+					},
+					{
+						"Title": "Schema & Predicates",
+						"Path": "schema.md"
+					}
+				]
+			},
+			{
+				"Title": "API Reference",
+				"Children": [
+					{
+						"Title": "Full Reference",
+						"Path": "api/reference.md"
+					},
+					{
+						"Title": "connectAsync",
+						"Path": "api/connectAsync.md"
+					},
+					{
+						"Title": "connect",
+						"Path": "api/connect.md"
+					},
+					{
+						"Title": "pool",
+						"Path": "api/pool.md"
+					},
+					{
+						"Title": "stub",
+						"Path": "api/stub.md"
+					},
+					{
+						"Title": "generateCreateTableStatement",
+						"Path": "api/generateCreateTableStatement.md"
+					},
+					{
+						"Title": "createTable",
+						"Path": "api/createTable.md"
+					},
+					{
+						"Title": "createTables",
+						"Path": "api/createTables.md"
+					},
+					{
+						"Title": "generateDropTableStatement",
+						"Path": "api/generateDropTableStatement.md"
+					}
+				]
+			},
+			{
+				"Title": "Retold Ecosystem",
+				"Children": [
+					{
+						"Title": "Meadow",
+						"Path": "meadow/meadow/README.md"
+					},
+					{
+						"Title": "FoxHound",
+						"Path": "meadow/foxhound/README.md"
+					},
+					{
+						"Title": "MySQL Connector",
+						"Path": "meadow/meadow-connection-mysql/README.md"
+					},
+					{
+						"Title": "MSSQL Connector",
+						"Path": "meadow/meadow-connection-mssql/README.md"
+					},
+					{
+						"Title": "SQLite Connector",
+						"Path": "meadow/meadow-connection-sqlite/README.md"
+					},
+					{
+						"Title": "RocksDB Connector",
+						"Path": "meadow/meadow-connection-rocksdb/README.md"
+					},
+					{
+						"Title": "Fable",
+						"Path": "fable/fable/README.md"
+					},
+					{
+						"Title": "Stricture",
+						"Path": "meadow/stricture/README.md"
+					},
+					{
+						"Title": "Indoctrinate",
+						"Path": "utility/indoctrinate/README.md"
+					}
+				]
+			}
+		],
+		"DocFiles": [
+			".nojekyll",
+			"README.md",
+			"_brand.json",
+			"_cover.md",
+			"_sidebar.md",
+			"_topbar.md",
+			"_version.json",
+			"api/connect.md",
+			"api/connectAsync.md",
+			"api/createTable.md",
+			"api/createTables.md",
+			"api/generateCreateTableStatement.md",
+			"api/generateDropTableStatement.md",
+			"api/pool.md",
+			"api/reference.md",
+			"api/stub.md",
+			"api.md",
+			"architecture.md",
+			"index.html",
+			"quickstart.md",
+			"retold-catalog.json",
+			"retold-keyword-index.json",
+			"schema.md"
+		]
+	},
+	"Groups": []
 }

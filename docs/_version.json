@@ -1,7 +1,7 @@
 {
 	"Name": "meadow-connection-dgraph",
-	"Version": "1.0.2",
+	"Version": "1.0.3",
 	"Description": "Meadow DGraph Connection Plugin",
-	"GeneratedAt": "2026-04-10T17:20:22.278Z",
-	"GitCommit": "0c6fc42"
+	"GeneratedAt": "2026-05-22T05:39:06.043Z",
+	"GitCommit": "4c35150"
 }
