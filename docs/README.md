@@ -158,9 +158,9 @@ The provider manages the client lifecycle and exposes the `dgraph-js-http` clien
 
 | Module | Purpose |
 |--------|---------|
-| [Meadow](/meadow/meadow/) | ORM and data access layer |
-| [FoxHound](/meadow/foxhound/) | Query DSL and SQL generation |
-| [meadow-connection-mysql](/meadow/meadow-connection-mysql/) | MySQL connection provider |
-| [meadow-connection-mssql](/meadow/meadow-connection-mssql/) | MSSQL connection provider |
-| [meadow-connection-sqlite](/meadow/meadow-connection-sqlite/) | SQLite connection provider |
-| [meadow-connection-rocksdb](/meadow/meadow-connection-rocksdb/) | RocksDB key-value provider |
+| [Meadow](https://stevenvelozo.github.io/meadow/) | ORM and data access layer |
+| [FoxHound](https://stevenvelozo.github.io/foxhound/) | Query DSL and SQL generation |
+| [meadow-connection-mysql](https://stevenvelozo.github.io/meadow-connection-mysql/) | MySQL connection provider |
+| [meadow-connection-mssql](https://stevenvelozo.github.io/meadow-connection-mssql/) | MSSQL connection provider |
+| [meadow-connection-sqlite](https://stevenvelozo.github.io/meadow-connection-sqlite/) | SQLite connection provider |
+| [meadow-connection-rocksdb](https://stevenvelozo.github.io/meadow-connection-rocksdb/) | RocksDB key-value provider |
