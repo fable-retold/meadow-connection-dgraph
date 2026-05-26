@@ -158,9 +158,9 @@ The provider manages the client lifecycle and exposes the `dgraph-js-http` clien
 
 | Module | Purpose |
 |--------|---------|
-| [Meadow](https://stevenvelozo.github.io/meadow/) | ORM and data access layer |
-| [FoxHound](https://stevenvelozo.github.io/foxhound/) | Query DSL and SQL generation |
-| [meadow-connection-mysql](https://stevenvelozo.github.io/meadow-connection-mysql/) | MySQL connection provider |
-| [meadow-connection-mssql](https://stevenvelozo.github.io/meadow-connection-mssql/) | MSSQL connection provider |
-| [meadow-connection-sqlite](https://stevenvelozo.github.io/meadow-connection-sqlite/) | SQLite connection provider |
-| [meadow-connection-rocksdb](https://stevenvelozo.github.io/meadow-connection-rocksdb/) | RocksDB key-value provider |
+| [Meadow](https://fable-retold.github.io/meadow/) | ORM and data access layer |
+| [FoxHound](https://fable-retold.github.io/foxhound/) | Query DSL and SQL generation |
+| [meadow-connection-mysql](https://fable-retold.github.io/meadow-connection-mysql/) | MySQL connection provider |
+| [meadow-connection-mssql](https://fable-retold.github.io/meadow-connection-mssql/) | MSSQL connection provider |
+| [meadow-connection-sqlite](https://fable-retold.github.io/meadow-connection-sqlite/) | SQLite connection provider |
+| [meadow-connection-rocksdb](https://fable-retold.github.io/meadow-connection-rocksdb/) | RocksDB key-value provider |

@@ -4,4 +4,4 @@
 - [Quickstart](quickstart.md)
 - [Architecture](architecture.md)
 - [API Reference](api/reference.md)
-- [GitHub](https://github.com/stevenvelozo/meadow-connection-dgraph)
+- [GitHub](https://github.com/fable-retold/meadow-connection-dgraph)

@@ -14,4 +14,4 @@ Connect any Fable application to a Dgraph cluster through the service provider p
 [Quick Start](quickstart.md)
 [API Reference](api/reference.md)
 [Architecture](architecture.md)
-[GitHub](https://github.com/stevenvelozo/meadow-connection-dgraph)
+[GitHub](https://github.com/fable-retold/meadow-connection-dgraph)
