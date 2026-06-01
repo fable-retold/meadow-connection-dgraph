@@ -1,6 +1,6 @@
 # Meadow Connection Dgraph
 
-> **[&#9654; Read the Meadow-Connection-Dgraph Documentation](https://fable-retold.github.io/meadow-connection-dgraph/)** &mdash; interactive docs with the full API reference.
+> **[Read the Meadow-Connection-Dgraph Documentation](https://fable-retold.github.io/meadow-connection-dgraph/)** - interactive docs with the full API reference.
 
 A Dgraph database connection provider for the Meadow ORM. Wraps [dgraph-js-http](https://github.com/dgraph-io/dgraph-js-http) as a Fable service, providing HTTP client management with optional auth token support and schema generation from Meadow table schemas.
 
