@@ -1,0 +1,13 @@
+graph TB
+	App["Fable Application"]
+	Settings["fable.settings.DGraph"]
+	Provider["MeadowConnectionDGraph<br/>(Fable Service Provider)"]
+	DgraphHTTP["dgraph-js-http<br/>(HTTP Client)"]
+	Alpha["Dgraph Alpha<br/>(HTTP API)"]
+
+	App -->|"reads config"| Settings
+	App -->|"connectAsync()"| Provider
+	Provider -->|"new DgraphClientStub(url)"| DgraphHTTP
+	DgraphHTTP -->|"HTTP requests"| Alpha
+	Provider -->|".pool getter"| DgraphHTTP
+	Settings -->|"Server, Port, AuthToken"| Provider

@@ -6,58 +6,15 @@ Meadow Connection Dgraph connects Fable applications to Dgraph graph databases t
 
 ## System Architecture
 
-```mermaid
-graph TB
-	App["Fable Application"]
-	Settings["fable.settings.DGraph"]
-	Provider["MeadowConnectionDGraph<br/>(Fable Service Provider)"]
-	DgraphHTTP["dgraph-js-http<br/>(HTTP Client)"]
-	Alpha["Dgraph Alpha<br/>(HTTP API)"]
-
-	App -->|"reads config"| Settings
-	App -->|"connectAsync()"| Provider
-	Provider -->|"new DgraphClientStub(url)"| DgraphHTTP
-	DgraphHTTP -->|"HTTP requests"| Alpha
-	Provider -->|".pool getter"| DgraphHTTP
-	Settings -->|"Server, Port, AuthToken"| Provider
-```
+<!-- bespoke diagram: edit diagrams/system-architecture.mmd or .hints.json, then: npx pict-renderer-graph build modules/meadow/meadow-connection-dgraph/docs -->
+![System Architecture](diagrams/system-architecture.svg)
 
 ---
 
 ## Connection Lifecycle
 
-```mermaid
-sequenceDiagram
-	participant App as Application
-	participant SM as ServiceManager
-	participant Provider as MeadowConnectionDGraph
-	participant Stub as DgraphClientStub
-	participant Client as DgraphClient
-	participant Alpha as Dgraph Alpha
-
-	App->>SM: addServiceType('MeadowDGraphProvider', lib)
-	App->>SM: instantiateServiceProvider('MeadowDGraphProvider')
-	SM->>Provider: new MeadowConnectionDGraph(fable, manifest, hash)
-	Note over Provider: connected = false
-
-	App->>Provider: connectAsync(callback)
-
-	alt Already connected
-		Provider-->>App: callback(null, existingClient)
-	else dgraph-js-http not installed
-		Provider-->>App: Error logged, returns
-	else Normal connect
-		Provider->>Provider: _buildConnectionURL()
-		Note over Provider: http://host:port
-		Provider->>Stub: new DgraphClientStub(url)
-		Provider->>Client: new DgraphClient(stub)
-		opt AuthToken provided
-			Provider->>Client: setAlphaAuthToken(token)
-		end
-		Note over Provider: connected = true
-		Provider-->>App: callback(null, client)
-	end
-```
+<!-- bespoke diagram: edit diagrams/connection-lifecycle.mmd or .hints.json, then: npx pict-renderer-graph build modules/meadow/meadow-connection-dgraph/docs -->
+![Connection Lifecycle](diagrams/connection-lifecycle.svg)
 
 ---
 
@@ -65,31 +22,8 @@ sequenceDiagram
 
 Unlike SQL-based Meadow connectors, Dgraph uses a transaction-based model. The provider exposes the client; all operations happen through transactions:
 
-```mermaid
-flowchart LR
-	subgraph "Dgraph Transaction API"
-		QUERY["txn.query(dql)<br/>-> DQL response"]
-		QVAR["txn.queryWithVars(dql, vars)<br/>-> DQL response"]
-		MUTATE["txn.mutate(mutation)<br/>-> mutation response"]
-		COMMIT["txn.commit()<br/>-> finalize"]
-		DISCARD["txn.discard()<br/>-> rollback"]
-	end
-
-	subgraph "Client Operations"
-		NEWTXN["client.newTxn()"]
-		ALTER["client.alter(schema)<br/>-> schema change"]
-	end
-
-	NEWTXN --> QUERY
-	NEWTXN --> QVAR
-	NEWTXN --> MUTATE
-	MUTATE --> COMMIT
-	MUTATE --> DISCARD
-
-	style QUERY fill:#e8f4e8
-	style MUTATE fill:#e8f0f8
-	style ALTER fill:#f8f0e8
-```
+<!-- bespoke diagram: edit diagrams/query-and-mutation-model.mmd or .hints.json, then: npx pict-renderer-graph build modules/meadow/meadow-connection-dgraph/docs -->
+![Query and Mutation Model](diagrams/query-and-mutation-model.svg)
 
 ### Operation Types
 
@@ -108,21 +42,8 @@ flowchart LR
 
 ## Connection Settings Flow
 
-```mermaid
-flowchart TD
-	FS["fable.settings.DGraph<br/>(Server, Port, AuthToken)"]
-	CO["Constructor Options<br/>(host, port, authToken)"]
-	Provider["MeadowConnectionDGraph"]
-	Decision{{"Which source?"}}
-	Normalize["Normalize property names<br/>(Server->host, Port->port, AuthToken->authToken)"]
-	URL["_buildConnectionURL()<br/>http://host:port"]
-
-	FS --> Decision
-	CO --> Decision
-	Decision -->|"Options override Settings"| Normalize
-	Normalize --> URL
-	URL --> Provider
-```
+<!-- bespoke diagram: edit diagrams/connection-settings-flow.mmd or .hints.json, then: npx pict-renderer-graph build modules/meadow/meadow-connection-dgraph/docs -->
+![Connection Settings Flow](diagrams/connection-settings-flow.svg)
 
 Settings priority:
 
@@ -137,23 +58,8 @@ Both Meadow-style (`Server`, `Port`, `AuthToken`) and lowercase (`host`, `port`,
 
 The `generateCreateTableStatement()` method translates a Meadow table schema into Dgraph predicate declarations and a type definition:
 
-```mermaid
-flowchart LR
-	Schema["Meadow Table Schema<br/>{ TableName, Columns[] }"]
-	Gen["generateCreateTableStatement()"]
-	Desc["Descriptor Object<br/>{ operation, schema, typeName }"]
-	Alter["client.alter({ schema })"]
-	Dgraph["Dgraph Schema Applied"]
-
-	Schema --> Gen
-	Gen --> Desc
-	Desc --> Alter
-	Alter --> Dgraph
-
-	style Schema fill:#f0f0f0
-	style Desc fill:#e8f4e8
-	style Dgraph fill:#e8f0f8
-```
+<!-- bespoke diagram: edit diagrams/schema-generation-flow.mmd or .hints.json, then: npx pict-renderer-graph build modules/meadow/meadow-connection-dgraph/docs -->
+![Schema Generation Flow](diagrams/schema-generation-flow.svg)
 
 Each Meadow column becomes a Dgraph predicate with an appropriate type and index:
 
@@ -175,38 +81,8 @@ See [Schema & Predicates](schema.md) for full details.
 
 ## Connection Safety
 
-```mermaid
-flowchart TD
-	Start["connectAsync() called"]
-	CheckCB{{"Callback<br/>provided?"}}
-	CheckConn{{"Already<br/>connected?"}}
-	CheckLib{{"dgraph-js-http<br/>loaded?"}}
-	Connect["Create ClientStub + Client"]
-	Auth{{"AuthToken<br/>provided?"}}
-	SetAuth["setAlphaAuthToken()"]
-	Done["callback(null, client)"]
-	ErrCB["Log error, use no-op callback"]
-	ErrConn["Log error, return existing client"]
-	ErrLib["Log error, return"]
-
-	Start --> CheckCB
-	CheckCB -->|No| ErrCB
-	CheckCB -->|Yes| CheckConn
-	ErrCB --> CheckConn
-	CheckConn -->|Yes| ErrConn
-	CheckConn -->|No| CheckLib
-	CheckLib -->|No| ErrLib
-	CheckLib -->|Yes| Connect
-	Connect --> Auth
-	Auth -->|Yes| SetAuth
-	Auth -->|No| Done
-	SetAuth --> Done
-
-	style ErrCB fill:#f8f0e0
-	style ErrConn fill:#f8f0e0
-	style ErrLib fill:#f8e0e0
-	style Done fill:#e0f8e0
-```
+<!-- bespoke diagram: edit diagrams/connection-safety.mmd or .hints.json, then: npx pict-renderer-graph build modules/meadow/meadow-connection-dgraph/docs -->
+![Connection Safety](diagrams/connection-safety.svg)
 
 The provider guards against:
 

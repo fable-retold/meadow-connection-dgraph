@@ -1,0 +1,23 @@
+flowchart LR
+	subgraph "Dgraph Transaction API"
+		QUERY["txn.query(dql)<br/>-> DQL response"]
+		QVAR["txn.queryWithVars(dql, vars)<br/>-> DQL response"]
+		MUTATE["txn.mutate(mutation)<br/>-> mutation response"]
+		COMMIT["txn.commit()<br/>-> finalize"]
+		DISCARD["txn.discard()<br/>-> rollback"]
+	end
+
+	subgraph "Client Operations"
+		NEWTXN["client.newTxn()"]
+		ALTER["client.alter(schema)<br/>-> schema change"]
+	end
+
+	NEWTXN --> QUERY
+	NEWTXN --> QVAR
+	NEWTXN --> MUTATE
+	MUTATE --> COMMIT
+	MUTATE --> DISCARD
+
+	style QUERY fill:#e8f4e8
+	style MUTATE fill:#e8f0f8
+	style ALTER fill:#f8f0e8

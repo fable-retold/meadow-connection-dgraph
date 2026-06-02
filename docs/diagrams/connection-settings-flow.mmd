@@ -1,0 +1,13 @@
+flowchart TD
+	FS["fable.settings.DGraph<br/>(Server, Port, AuthToken)"]
+	CO["Constructor Options<br/>(host, port, authToken)"]
+	Provider["MeadowConnectionDGraph"]
+	Decision{{"Which source?"}}
+	Normalize["Normalize property names<br/>(Server->host, Port->port, AuthToken->authToken)"]
+	URL["_buildConnectionURL()<br/>http://host:port"]
+
+	FS --> Decision
+	CO --> Decision
+	Decision -->|"Options override Settings"| Normalize
+	Normalize --> URL
+	URL --> Provider

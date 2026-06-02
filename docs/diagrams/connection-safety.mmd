@@ -1,0 +1,30 @@
+flowchart TD
+	Start["connectAsync() called"]
+	CheckCB{{"Callback<br/>provided?"}}
+	CheckConn{{"Already<br/>connected?"}}
+	CheckLib{{"dgraph-js-http<br/>loaded?"}}
+	Connect["Create ClientStub + Client"]
+	Auth{{"AuthToken<br/>provided?"}}
+	SetAuth["setAlphaAuthToken()"]
+	Done["callback(null, client)"]
+	ErrCB["Log error, use no-op callback"]
+	ErrConn["Log error, return existing client"]
+	ErrLib["Log error, return"]
+
+	Start --> CheckCB
+	CheckCB -->|No| ErrCB
+	CheckCB -->|Yes| CheckConn
+	ErrCB --> CheckConn
+	CheckConn -->|Yes| ErrConn
+	CheckConn -->|No| CheckLib
+	CheckLib -->|No| ErrLib
+	CheckLib -->|Yes| Connect
+	Connect --> Auth
+	Auth -->|Yes| SetAuth
+	Auth -->|No| Done
+	SetAuth --> Done
+
+	style ErrCB fill:#f8f0e0
+	style ErrConn fill:#f8f0e0
+	style ErrLib fill:#f8e0e0
+	style Done fill:#e0f8e0

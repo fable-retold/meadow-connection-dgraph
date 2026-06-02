@@ -1,0 +1,30 @@
+sequenceDiagram
+	participant App as Application
+	participant SM as ServiceManager
+	participant Provider as MeadowConnectionDGraph
+	participant Stub as DgraphClientStub
+	participant Client as DgraphClient
+	participant Alpha as Dgraph Alpha
+
+	App->>SM: addServiceType('MeadowDGraphProvider', lib)
+	App->>SM: instantiateServiceProvider('MeadowDGraphProvider')
+	SM->>Provider: new MeadowConnectionDGraph(fable, manifest, hash)
+	Note over Provider: connected = false
+
+	App->>Provider: connectAsync(callback)
+
+	alt Already connected
+		Provider-->>App: callback(null, existingClient)
+	else dgraph-js-http not installed
+		Provider-->>App: Error logged, returns
+	else Normal connect
+		Provider->>Provider: _buildConnectionURL()
+		Note over Provider: http://host:port
+		Provider->>Stub: new DgraphClientStub(url)
+		Provider->>Client: new DgraphClient(stub)
+		opt AuthToken provided
+			Provider->>Client: setAlphaAuthToken(token)
+		end
+		Note over Provider: connected = true
+		Provider-->>App: callback(null, client)
+	end

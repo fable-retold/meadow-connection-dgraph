@@ -1,0 +1,15 @@
+flowchart LR
+	Schema["Meadow Table Schema<br/>{ TableName, Columns[] }"]
+	Gen["generateCreateTableStatement()"]
+	Desc["Descriptor Object<br/>{ operation, schema, typeName }"]
+	Alter["client.alter({ schema })"]
+	Dgraph["Dgraph Schema Applied"]
+
+	Schema --> Gen
+	Gen --> Desc
+	Desc --> Alter
+	Alter --> Dgraph
+
+	style Schema fill:#f0f0f0
+	style Desc fill:#e8f4e8
+	style Dgraph fill:#e8f0f8
