@@ -110,40 +110,8 @@ The token is applied via `client.setAlphaAuthToken()` during connection.
 
 ## How It Works
 
-```
-┌─────────────────────────────┐
-│  Fable Application          │
-│                             │
-│  fable.settings.DGraph      │
-│   ├── Server                │
-│   ├── Port                  │
-│   └── AuthToken             │
-└───────────┬─────────────────┘
-            │ connectAsync()
-            ▼
-┌─────────────────────────────┐
-│  MeadowConnectionDGraph     │
-│  (Fable Service Provider)   │
-│                             │
-│  .connected                 │
-│  .pool ─────────────────┐   │
-│  .stub                  │   │
-└─────────────────────────┼───┘
-                          │
-            ┌─────────────▼───────────┐
-            │  dgraph-js-http         │
-            │                         │
-            │  client.newTxn()        │
-            │    .query(dql)          │
-            │    .mutate(mutation)    │
-            │    .commit()            │
-            │  client.alter(schema)   │
-            └─────────────────────────┘
-                          │
-            ┌─────────────▼───────────┐
-            │  Dgraph Alpha (HTTP)    │
-            └─────────────────────────┘
-```
+<!-- bespoke diagram: edit diagrams/how-it-works.mmd or .hints.json, then: npx pict-renderer-graph build modules/meadow/meadow-connection-dgraph/docs -->
+![How It Works](diagrams/how-it-works.svg)
 
 The provider manages the client lifecycle and exposes the `dgraph-js-http` client. All queries, mutations, and schema alterations go through the Dgraph client's transaction and alter APIs.
 

@@ -1,0 +1,4 @@
+graph TD
+    Fable["Fable Application<br/>fable.settings.DGraph<br/>├── Server / ├── Port / └── AuthToken"] -->|connectAsync()| MeadowDGraph["MeadowConnectionDGraph<br/>(Fable Service Provider)<br/>.connected / .pool / .stub"]
+    MeadowDGraph --> DgraphJS["dgraph-js-http<br/>client.newTxn()<br/>.query(dql) / .mutate(mutation) / .commit()<br/>client.alter(schema)"]
+    DgraphJS --> DgraphAlpha["Dgraph Alpha (HTTP)"]
