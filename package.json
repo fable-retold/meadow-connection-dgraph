@@ -3,6 +3,9 @@
 	"version": "1.0.3",
 	"description": "Meadow DGraph Connection Plugin",
 	"main": "source/Meadow-Connection-DGraph.js",
+	"files": [
+		"source"
+	],
 	"scripts": {
 		"coverage": "npx quack coverage",
 		"test": "npx quack test",
